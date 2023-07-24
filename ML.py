@@ -5,6 +5,7 @@ import mysql.connector as mariadb
 
 class Machine_Learning:
     
+    
     def __init__(self):
 
       
@@ -22,8 +23,12 @@ class Machine_Learning:
         self.clean6=0
         self.clean7=0
         self.dummy=0
+        self.dummy2=0
+        self.var_name=0
         self.df2=0
         self.df3=0
+        self.df4=0
+        self.df5=0
         self.p1=0
         self.p2=0
         self.p3=0
@@ -100,13 +105,17 @@ class Machine_Learning:
         print("X"*30) 
         print(self.df3)
         
+    def generacion_dataset(self,df,var_name):
+        
+        self.dummy2=pd.get_dummies(self.df[var_name],prefix=self.var_name)
+        self.df5=self.df.drop(self.var_name,axis=1)
+        self.df5=pd.concat([self.df5,self.dummy2])
+        
+        print(self.df5)
         
         
         
-        
-        
-        
-
+'''
 p=Machine_Learning()
 p.parametros()
 p.MissingValues()
@@ -116,5 +125,6 @@ p.computo_valores_faltantes()
 p.computo_columna()
 p.computo_variables()
 p.generacion_dummy()
-
-
+print("XXXXXXXXX"*70)
+p.generacion_dataset(df,"sex")
+'''
